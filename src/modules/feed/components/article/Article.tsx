@@ -9,7 +9,7 @@ export const Article: FC<ArticleProps> = ({}) => {
   return (
     <article>
       <div className='border-t border-black/10 py-6'>
-        <div className='mb-4 font-light flex justify-between'>
+        <div className='mb-4 font-light flex'>
           <Link to='/@finswim'>
             <img
               src='https://api.realworld.io/images/demo-avatar.png'
@@ -17,7 +17,7 @@ export const Article: FC<ArticleProps> = ({}) => {
               className='inline-block h-8 w-8 rounded-full'
             />
           </Link>
-          <div className='mr-6 ml-0.3 inline-block leading-4 inline-flex flex-col'>
+          <div className='mr-6 ml-0.3 leading-4 inline-flex flex-col'>
             <Link to='/@finswim' className='font-medium'>
               Andrii Rastorhuiev
             </Link>
