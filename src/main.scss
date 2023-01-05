@@ -7,4 +7,13 @@
     font-family: 'Source Sans Pro', sans-serif;
     color: #373a3c;
   }
+
+  a {
+    @apply text-conduit-green;
+
+    &:hover {
+      @apply text-conduit-darkGreen;
+      @apply underline;
+    }
+  }
 }

@@ -1,7 +1,7 @@
 import clsx from 'clsx';
 import { FC } from 'react';
 import { Link, NavLink } from 'react-router-dom';
-import { Container } from '../Container/Container';
+import { Container } from '../container/Container';
 
 export const Header: FC = () => {
   const navLinkClasses = ({ isActive }: { isActive: boolean }) =>
