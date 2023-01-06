@@ -1,6 +1,8 @@
 import { FC } from 'react';
-import { FeedArticle } from '../../api/dto/global-feed.in';
+
 import { Article } from '../article/Article';
+
+import { FeedArticle } from '../../api/dto/global-feed.in';
 
 interface ArticleListProps {
   list: FeedArticle[];
@@ -8,7 +10,7 @@ interface ArticleListProps {
 
 export const ArticleList: FC<ArticleListProps> = ({ list }) => {
   return (
-    <div className='w-3/4'>
+    <div>
       {list.map((article) => (
         <Article key={article.slug} {...article} />
       ))}
