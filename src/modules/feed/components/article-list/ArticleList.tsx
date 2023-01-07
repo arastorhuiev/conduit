@@ -1,8 +1,8 @@
 import { FC } from 'react';
 
-import { Article } from '../article/Article';
-
 import { FeedArticle } from '../../api/dto/global-feed.in';
+
+import { Article } from '../article/Article';
 
 interface ArticleListProps {
   list: FeedArticle[];

@@ -3,15 +3,14 @@ import { FC, useState } from 'react';
 import { useSearchParams } from 'react-router-dom';
 
 import { useGetGlobalFeedQuery } from '../../api/repository';
+import { FEED_PAGE_SIZE } from '../../conts';
+import { serializeSearchParams } from '../../../../utils/router';
 
 import ReactPaginate from 'react-paginate';
 
 import { Container } from '../../../../components/container/Container';
 import { ArticleList } from '../article-list/ArticleList';
 import { FeedToggle } from '../feed-toggle/FeedToggle';
-
-import { FEED_PAGE_SIZE } from '../../conts';
-import { serializeSearchParams } from '../../../../utils/router';
 
 export const Feed: FC = () => {
   const [searchParams, setSearchParams] = useSearchParams();
