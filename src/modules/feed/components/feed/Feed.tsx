@@ -11,6 +11,7 @@ import ReactPaginate from 'react-paginate';
 import { Container } from '../../../../components/container/Container';
 import { ArticleList } from '../article-list/ArticleList';
 import { FeedToggle } from '../feed-toggle/FeedToggle';
+import { TagCloud } from '../tag-cloud/TagCloud';
 
 export const Feed: FC = () => {
   const [searchParams, setSearchParams] = useSearchParams();
@@ -18,12 +19,16 @@ export const Feed: FC = () => {
     searchParams.get('page') ? Number(searchParams.get('page')) : 0,
   );
 
-  const { data, error, isLoading, isFetching } = useGetGlobalFeedQuery({ page });
+  const { data, error, isLoading, isFetching } = useGetGlobalFeedQuery({
+    page,
+  });
 
   const handlePageChange = ({ selected }: { selected: number }) => {
     setPage(selected);
     setSearchParams(serializeSearchParams({ page: String(selected) }));
   };
+
+  const pageCounter = Math.ceil((data?.articlesCount || 0) / FEED_PAGE_SIZE);
 
   if (isLoading || isFetching) {
     return <Container>Feed is loading...</Container>;
@@ -42,8 +47,8 @@ export const Feed: FC = () => {
           <nav className='my-6'>
             <ReactPaginate
               containerClassName='flex'
-              pageCount={(data?.articlesCount || 0) / FEED_PAGE_SIZE}
-              pageRangeDisplayed={(data?.articlesCount || 0) / FEED_PAGE_SIZE}
+              pageCount={pageCounter}
+              pageRangeDisplayed={pageCounter}
               previousLabel={null}
               nextLabel={null}
               pageClassName='group'
@@ -56,7 +61,9 @@ export const Feed: FC = () => {
           </nav>
         </div>
 
-        <div className='w-1/4'>tags</div>
+        <div className='w-1/4 pl-3'>
+          <TagCloud />
+        </div>
       </div>
     </Container>
   );

@@ -13,9 +13,11 @@ export const App: FC = () => {
   return (
     <Provider store={store}>
       <BrowserRouter>
-        <Header />
-        <Banner />
-        <Feed />
+        <div className='pb-16'>
+          <Header />
+          <Banner />
+          <Feed />
+        </div>
       </BrowserRouter>
     </Provider>
   );
