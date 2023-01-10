@@ -1,6 +1,7 @@
 import { FC } from 'react';
-import { Container } from '../../../../components/container/Container';
+
 import { useGetPopularTagsQuery } from '../../api/repository';
+
 import { TagList } from '../tag-list/TagList';
 
 interface TagCloudProps {}
