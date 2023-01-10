@@ -33,7 +33,7 @@ export const TagList: FC<TagListProps> = ({
     <ul className='flex flex-wrap'>
       {list.map((tag) => {
         return isLink ? (
-          <Link to={`/?tag=${tag}}`} key={tag} className={itemClasses}>
+          <Link to={`/?tag=${tag}`} key={tag} className={itemClasses}>
             {tag}
           </Link>
         ) : (
