@@ -18,7 +18,7 @@ export const Header: FC = () => {
           <div className='flex justify-between items-center'>
             <Link
               className='font-titillium text-conduit-green text-2xl mr-8'
-              to='#'>
+              to='/'>
               conduit
             </Link>
             <ul className='pl-0 mb-0 list-none flex'>
