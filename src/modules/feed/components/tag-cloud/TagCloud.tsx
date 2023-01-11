@@ -11,7 +11,7 @@ export const TagCloud: FC<TagCloudProps> = () => {
 
   if (isLoading || isFetching) {
     return (
-      <div className='bg-conduit-tagCloudBg p-3 pt-1.5'>
+      <div className='bg-conduit-gray-100 p-3 pt-1.5'>
         <p className='mb-2'>Loading popular tags...</p>
       </div>
     );
@@ -19,14 +19,14 @@ export const TagCloud: FC<TagCloudProps> = () => {
 
   if (error) {
     return (
-      <div className='bg-conduit-tagCloudBg p-3 pt-1.5'>
+      <div className='bg-conduit-gray-100 p-3 pt-1.5'>
         <p className='mb-2'>{`Loading error ${error}`}</p>
       </div>
     );
   }
 
   return (
-    <div className='bg-conduit-tagCloudBg p-3 pt-1.5'>
+    <div className='bg-conduit-gray-100 p-3 pt-1.5'>
       <p className='mb-2'>Popular Tags</p>
       <TagList list={data!.tags} itemStyle={'DARK'} isLink={true} />
     </div>
