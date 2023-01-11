@@ -6,7 +6,7 @@ import { PoplarTagsIn } from './dto/popular-tags.in';
 
 interface GlobalFeedParams {
   page: number;
-  tag?: string | null;
+  tag: string | null;
 }
 
 export const feedApi = createApi({
