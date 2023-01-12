@@ -39,7 +39,7 @@ export const TagList: FC<TagListProps> = ({
           </Link>
         ) : (
           <li key={tag} className={itemClasses}>
-            qwerty
+            {tag}
           </li>
         );
       })}
