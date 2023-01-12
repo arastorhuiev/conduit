@@ -1,6 +1,6 @@
 import { FC } from 'react';
-import { Container } from '../../../../components/container/Container';
-import { FollowButton } from '../follow-button/FollowButton';
+import { Container } from '../../../../components/Container/Container';
+import { FollowButton } from '../FollowButton/FollowButton';
 
 interface ProfileBannerProps {}
 

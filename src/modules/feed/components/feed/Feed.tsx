@@ -8,10 +8,10 @@ import { serializeSearchParams } from '../../../../utils/router';
 
 import ReactPaginate from 'react-paginate';
 
-import { Container } from '../../../../components/container/Container';
-import { ArticleList } from '../article-list/ArticleList';
-import { FeedToggle } from '../feed-toggle/FeedToggle';
-import { TagCloud } from '../tag-cloud/TagCloud';
+import { Container } from '../../../../components/Container/Container';
+import { FeedToggle } from '../FeedToggle/FeedToggle';
+import { ArticleList } from '../ArticleList/ArticleList';
+import { TagCloud } from '../TagCloud/TagCloud';
 
 export const Feed: FC = () => {
   const [searchParams, setSearchParams] = useSearchParams();

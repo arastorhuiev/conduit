@@ -2,7 +2,7 @@ import { FC } from 'react';
 
 import { useGetPopularTagsQuery } from '../../api/repository';
 
-import { TagList } from '../tag-list/TagList';
+import { TagList } from '../TagList/TagList';
 
 interface TagCloudProps {}
 

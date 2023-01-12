@@ -1,6 +1,6 @@
 import { FC } from 'react';
-import { Banner } from '../../../components/banner/Banner';
-import { Feed } from '../components/feed/Feed';
+import { Banner } from '../../../components/Banner/Banner';
+import { Feed } from '../components/Feed/Feed';
 
 interface GlobalFeedPageProps {}
 

@@ -5,8 +5,8 @@ import { DateTime } from 'luxon';
 
 import { FeedArticle } from '../../api/dto/global-feed.in';
 
-import { FavoriteButton } from '../favorite-button/FavoriteButton';
-import { TagList } from '../tag-list/TagList';
+import { FavoriteButton } from '../FavoriteButton/FavoriteButton';
+import { TagList } from '../TagList/TagList';
 
 interface ArticleProps extends FeedArticle {
   key: string;

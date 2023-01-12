@@ -1,5 +1,5 @@
 import { FC } from 'react';
-import { ProfileBanner } from '../components/profile-banner/ProfileBanner';
+import { ProfileBanner } from '../components/ProfileBanner/ProfileBanner';
 
 interface ProfilePageProps {}
 
