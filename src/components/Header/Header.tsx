@@ -23,7 +23,7 @@ export const Header: FC = () => {
             </Link>
             <ul className='pl-0 mb-0 list-none flex'>
               <li className='ml-4'>
-                <NavLink to='#' className={navLinkClasses}>
+                <NavLink end to='#' className={navLinkClasses} >
                   Home
                 </NavLink>
               </li>
