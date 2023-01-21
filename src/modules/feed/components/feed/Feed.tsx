@@ -25,11 +25,15 @@ export const Feed: FC<FeedProps> = ({ isLoading, isFetching, error, data }) => {
   const pageCounter = Math.ceil((data?.articlesCount || 0) / FEED_PAGE_SIZE);
 
   if (isLoading || isFetching) {
-    return <p>Feed is loading...</p>;
+    return <p className='mt-4'>Feed is loading...</p>;
   }
 
   if (error) {
-    return <p>Error loading feed</p>;
+    return <p className='mt-4'>Error loading feed</p>;
+  }
+
+  if (data?.articlesCount === 0) {
+    return <p className='mt-4'>No articles are here... yet.</p>
   }
 
   return (

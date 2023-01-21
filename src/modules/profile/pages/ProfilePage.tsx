@@ -18,18 +18,30 @@ interface ProfilePageProps {}
 export const ProfilePage: FC<ProfilePageProps> = () => {
   const { page } = usePageParams();
   const { profile } = useParams<ProfilePageParams>();
-  const location = useLocation();
+  const { pathname } = useLocation();
 
   const { isLoading, isFetching, data, error } = useGetProfileFeedQuery({
     page,
     author: profile!,
+    isFavorite: pathname.includes(`/${encodeURIComponent(profile!)}/favorites`)
   });
+
+  const FeedToggleItems = [
+    {
+      text: 'Favorited articles',
+      link: `/${encodeURIComponent(profile!)}/favorites`,
+    },
+  ];
 
   return (
     <>
       <ProfileBanner />
       <Container>
-        <FeedToggle defaultText='My Articles' defaultLink={location.pathname} />
+        <FeedToggle
+          defaultText='My Articles'
+          defaultLink={`/${encodeURIComponent(profile!)}`}
+          items={FeedToggleItems}
+        />
         <Feed
           isLoading={isLoading}
           isFetching={isFetching}

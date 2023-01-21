@@ -5,7 +5,7 @@ import { store } from './store/store';
 
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 
-import { Header } from './components/header/Header';
+import { Header } from './components/Header/Header';
 import { GlobalFeedPage } from './modules/feed/pages/GlobalFeedPage';
 import { ProfilePage } from './modules/profile/pages/ProfilePage';
 
@@ -17,7 +17,8 @@ export const App: FC = () => {
           <Header />
           <Routes>
             <Route path='/' element={<GlobalFeedPage />} />
-            <Route element={<ProfilePage />} path='/:profile' />
+            <Route path='/:profile' element={<ProfilePage />}  />
+            <Route path='/:profile/favorites' element={<ProfilePage />}  />
           </Routes>
         </div>
       </BrowserRouter>

@@ -15,6 +15,7 @@ interface GlobalFeedParams extends BaseFeedParams {
 
 interface ProfileFeedParams extends BaseFeedParams {
   author: string;
+  isFavorite?: boolean;
 }
 
 export interface FeedData {
@@ -40,12 +41,13 @@ export const feedApi = createApi({
       transformResponse,
     }),
     getProfileFeed: builder.query<FeedData, ProfileFeedParams>({
-      query: ({ page, author }) => ({
+      query: ({ page, author, isFavorite = false }) => ({
         url: '/articles',
         params: {
           limit: FEED_PAGE_SIZE,
           offset: page * FEED_PAGE_SIZE,
-          author,
+          author: isFavorite ? undefined : author,
+          favorited: !isFavorite ? undefined : author,
         },
       }),
       transformResponse,
