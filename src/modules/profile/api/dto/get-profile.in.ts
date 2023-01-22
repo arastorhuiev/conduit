@@ -2,7 +2,7 @@ export interface GetProfileInDTO {
   profile: Profile;
 }
 
-interface Profile {
+export interface Profile {
   username: string;
   bio: string;
   image: string;

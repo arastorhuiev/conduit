@@ -3,10 +3,12 @@ import { useDispatch, useSelector } from 'react-redux';
 import type { TypedUseSelectorHook } from 'react-redux';
 
 import { feedApi } from '../modules/feed/api/repository';
+import { profileApi } from '../modules/profile/api/repository';
 
 export const store = configureStore({
   reducer: {
     [feedApi.reducerPath]: feedApi.reducer,
+    [profileApi.reducerPath]: profileApi.reducer,
   },
   middleware: (getDefaultMiddleware) => {
     return getDefaultMiddleware().concat(feedApi.middleware);

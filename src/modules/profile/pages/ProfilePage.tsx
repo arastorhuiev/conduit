@@ -8,6 +8,7 @@ import { Container } from '../../../components/Container/Container';
 import { Feed } from '../../feed/components/Feed/Feed';
 import { ProfileBanner } from '../components/ProfileBanner/ProfileBanner';
 import { FeedToggle } from '../../feed/components/FeedToggle/FeedToggle';
+import { useGetProfileQuery } from '../api/repository';
 
 type ProfilePageParams = {
   profile: string;
@@ -20,10 +21,17 @@ export const ProfilePage: FC<ProfilePageProps> = () => {
   const { profile } = useParams<ProfilePageParams>();
   const { pathname } = useLocation();
 
-  const { isLoading, isFetching, data, error } = useGetProfileFeedQuery({
+  const {
+    data: profileInfo,
+    isLoading: profileLoading,
+    error: profileError,
+    isFetching: profileFetching,
+  } = useGetProfileQuery({ username: profile! });
+
+  const { data, isLoading, error, isFetching } = useGetProfileFeedQuery({
     page,
     author: profile!,
-    isFavorite: pathname.includes(`/${encodeURIComponent(profile!)}/favorites`)
+    isFavorite: pathname.includes(`/${encodeURIComponent(profile!)}/favorites`),
   });
 
   const FeedToggleItems = [
@@ -33,9 +41,13 @@ export const ProfilePage: FC<ProfilePageProps> = () => {
     },
   ];
 
+  if (profileLoading) {
+    return null;
+  }
+
   return (
     <>
-      <ProfileBanner />
+      <ProfileBanner profile={profileInfo!.profile} />
       <Container>
         <FeedToggle
           defaultText='My Articles'
