@@ -8,6 +8,7 @@ import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import { Header } from './components/Header/Header';
 import { GlobalFeedPage } from './modules/feed/pages/GlobalFeedPage';
 import { ProfilePage } from './modules/profile/pages/ProfilePage';
+import { ArticlePage } from './modules/feed/pages/ArticlePage';
 
 export const App: FC = () => {
   return (
@@ -19,6 +20,7 @@ export const App: FC = () => {
             <Route path='/' element={<GlobalFeedPage />} />
             <Route path='/:profile' element={<ProfilePage />} />
             <Route path='/:profile/favorites' element={<ProfilePage />} />
+            <Route path='/article/:slug' element={<ArticlePage />} />
           </Routes>
         </div>
       </BrowserRouter>

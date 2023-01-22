@@ -10,7 +10,7 @@ interface FeedToggleItem {
 interface FeedToggleProps {
   defaultText?: string;
   defaultLink?: string;
-  items: FeedToggleItem[];
+  items?: FeedToggleItem[];
 }
 
 export const FeedToggle: FC<FeedToggleProps> = ({
