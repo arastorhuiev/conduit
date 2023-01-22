@@ -11,7 +11,7 @@ export const store = configureStore({
     [profileApi.reducerPath]: profileApi.reducer,
   },
   middleware: (getDefaultMiddleware) => {
-    return getDefaultMiddleware().concat(feedApi.middleware);
+    return getDefaultMiddleware().concat(feedApi.middleware, profileApi.middleware);
   },
 });
 
