@@ -1,12 +1,12 @@
-import { FC } from 'react';
-import { Link } from 'react-router-dom';
-import { DateTime } from 'luxon';
-import { Author } from '../../api/dto/global-feed.in';
-import clsx from 'clsx';
+import { FC } from "react";
+import { Link } from "react-router-dom";
+import { DateTime } from "luxon";
+import clsx from "clsx";
+import { Author } from "../../api/dto/global-feed.in";
 
 export enum NameStyleEnum {
-  GREEN = 'GREEN',
-  LIGHT = 'LIGHT',
+  GREEN = "GREEN",
+  LIGHT = "LIGHT",
 }
 
 interface ArticleAuthorProps {
@@ -20,26 +20,27 @@ export const ArticleAuthor: FC<ArticleAuthorProps> = ({
   createdAt,
   nameStyle = NameStyleEnum.GREEN,
 }) => {
-  const usernameClasses = clsx('font-medium', {
-    'text-white hover:text-white': nameStyle === NameStyleEnum.LIGHT,
+  const usernameClasses = clsx("font-medium", {
+    "text-white hover:text-white": nameStyle === NameStyleEnum.LIGHT,
   });
 
   return (
-    <div className='flex'>
+    <div className="flex">
       <Link to={`/${author.username}`}>
         <img
           src={author.image}
           alt={`${author.username} avatar`}
-          className='inline-block h-8 w-8 rounded-full'
+          className="inline-block h-8 w-8 rounded-full"
         />
       </Link>
-      <div className='mr-6 ml-0.3 leading-4 inline-flex flex-col'>
+      <div className="mr-6 ml-0.3 leading-4 inline-flex flex-col">
         <Link
           to={`/${encodeURIComponent(author.username)}`}
-          className={usernameClasses}>
+          className={usernameClasses}
+        >
           {author.username}
         </Link>
-        <span className='text-conduit-gray-500 text-date'>
+        <span className="text-conduit-gray-500 text-date">
           {DateTime.fromISO(createdAt).toLocaleString(DateTime.DATE_FULL)}
         </span>
       </div>

@@ -1,14 +1,14 @@
-import { FC } from 'react';
-import { useLocation, useParams } from 'react-router-dom';
+import { FC } from "react";
+import { useLocation, useParams } from "react-router-dom";
 
-import { useGetProfileFeedQuery } from '../../feed/api/repository';
-import { usePageParams } from '../../feed/hooks/use-page-params';
+import { useGetProfileFeedQuery } from "../../feed/api/repository";
+import { useGetProfileQuery } from "../api/repository";
+import { usePageParams } from "../../feed/hooks/use-page-params";
 
-import { Container } from '../../../components/Container/Container';
-import { Feed } from '../../feed/components/Feed/Feed';
-import { ProfileBanner } from '../components/ProfileBanner/ProfileBanner';
-import { FeedToggle } from '../../feed/components/FeedToggle/FeedToggle';
-import { useGetProfileQuery } from '../api/repository';
+import { Container } from "../../../components/Container/Container";
+import { Feed } from "../../feed/components/Feed/Feed";
+import { ProfileBanner } from "../components/ProfileBanner/ProfileBanner";
+import { FeedToggle } from "../../feed/components/FeedToggle/FeedToggle";
 
 type ProfilePageParams = {
   profile: string;
@@ -36,7 +36,7 @@ export const ProfilePage: FC<ProfilePageProps> = () => {
 
   const FeedToggleItems = [
     {
-      text: 'Favorited articles',
+      text: "Favorited articles",
       link: `/${encodeURIComponent(profile!)}/favorites`,
     },
   ];
@@ -50,7 +50,7 @@ export const ProfilePage: FC<ProfilePageProps> = () => {
       <ProfileBanner profile={profileInfo!.profile} />
       <Container>
         <FeedToggle
-          defaultText='My Articles'
+          defaultText="My Articles"
           defaultLink={`/${encodeURIComponent(profile!)}`}
           items={FeedToggleItems}
         />
