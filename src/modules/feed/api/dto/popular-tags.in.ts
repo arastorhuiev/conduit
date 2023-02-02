@@ -1,3 +1,3 @@
-export interface PoplarTagsIn {
+export interface PopularTagsInDTO {
   tags: string[];
 }
