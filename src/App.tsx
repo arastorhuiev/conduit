@@ -14,13 +14,13 @@ export const App: FC = () => {
   return (
     <Provider store={store}>
       <BrowserRouter>
-        <div className='pb-16'>
+        <div className="pb-16">
           <Header />
           <Routes>
-            <Route path='/' element={<GlobalFeedPage />} />
-            <Route path='/:profile' element={<ProfilePage />} />
-            <Route path='/:profile/favorites' element={<ProfilePage />} />
-            <Route path='/article/:slug' element={<ArticlePage />} />
+            <Route path="/" element={<GlobalFeedPage />} />
+            <Route path="/:profile" element={<ProfilePage />} />
+            <Route path="/:profile/favorites" element={<ProfilePage />} />
+            <Route path="/article/:slug" element={<ArticlePage />} />
           </Routes>
         </div>
       </BrowserRouter>
