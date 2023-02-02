@@ -52,7 +52,7 @@ module.exports = {
         tag: '10rem',
       },
       lineHeight: {
-        articleTitle: '1.1rem',
+        articleTitle: '1.1',
         articleBody: '1.8rem',
       },
     },
