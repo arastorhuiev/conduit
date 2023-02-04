@@ -8,6 +8,10 @@ import { TagList } from '../components/TagList/TagList';
 
 interface ArticlePageProps {}
 
+const convertNewLines = (body: string) => {
+  return body.split('\\n').join('<br />');
+};
+
 export const ArticlePage: FC<ArticlePageProps> = () => {
   const { slug } = useParams();
 
@@ -31,9 +35,12 @@ export const ArticlePage: FC<ArticlePageProps> = () => {
       />
       <Container>
         <div className="pb-8 border-b mb-6">
-          <p className="text-articleBody leading-articleBody font-sourceSerif mb-8">
-            {data.article.body}
-          </p>
+          <p
+            className="text-articleBody leading-articleBody font-sourceSerif mb-8"
+            dangerouslySetInnerHTML={{
+              __html: convertNewLines(data.article.body),
+            }}
+          />
           <TagList list={data.article.tagList} />
         </div>
         <div className="flex justify-center">
