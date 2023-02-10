@@ -1,46 +1,68 @@
-import { FC } from "react";
-import { Link } from "react-router-dom";
-import { DateTime } from "luxon";
-import clsx from "clsx";
-import { Author } from "../../api/dto/global-feed.in";
+import { FC } from 'react';
+import { Link } from 'react-router-dom';
+import { DateTime } from 'luxon';
+import clsx from 'clsx';
+import { Author } from '../../api/dto/global-feed.in';
 
 export enum NameStyleEnum {
-  GREEN = "GREEN",
-  LIGHT = "LIGHT",
+  GREEN = 'GREEN',
+  LIGHT = 'LIGHT',
+}
+
+export enum MetaDirectionEnum {
+  ROW = 'ROW',
+  COL = 'COL',
+}
+
+enum NameSizeEnum {
+  BASE = 'BASE',
+  SMALL = 'SMALL',
 }
 
 interface ArticleAuthorProps {
   author: Author;
   publishedAt: string;
   nameStyle?: keyof typeof NameStyleEnum;
+  direction?: keyof typeof MetaDirectionEnum;
+  nameSize?: keyof typeof NameSizeEnum;
 }
 
 export const ArticleAuthor: FC<ArticleAuthorProps> = ({
   author,
   publishedAt,
   nameStyle = NameStyleEnum.GREEN,
+  direction = MetaDirectionEnum.COL,
+  nameSize = NameSizeEnum.BASE,
 }) => {
-  const usernameClasses = clsx("font-medium", {
-    "text-white hover:text-white": nameStyle === NameStyleEnum.LIGHT,
+  const usernameClasses = clsx('font-medium', {
+    'text-white hover:text-white': nameStyle === NameStyleEnum.LIGHT,
+    'text-date': nameSize === NameSizeEnum.SMALL,
+  });
+
+  const metaClasses = clsx('mr-6 ml-0.3 leading-4 inline-flex', {
+    'flex-col': direction === MetaDirectionEnum.COL,
+    'flex-row items-center gap-2': direction === MetaDirectionEnum.ROW,
+  });
+
+  const imageClasses = clsx('inline-block rounded-full', {
+    'h-8 w-8': nameSize === NameSizeEnum.SMALL,
+    'h5 w-5': nameSize === NameSizeEnum.SMALL,
   });
 
   return (
-    <div className="flex">
+    <div className='flex'>
       <Link to={`/${author.username}`}>
         <img
           src={author.image}
           alt={`${author.username} avatar`}
-          className="inline-block h-8 w-8 rounded-full"
+          className={imageClasses}
         />
       </Link>
-      <div className="mr-6 ml-0.3 leading-4 inline-flex flex-col">
-        <Link
-          to={`/${encodeURIComponent(author.username)}`}
-          className={usernameClasses}
-        >
+      <div className={metaClasses}>
+        <Link to={`/${encodeURIComponent(author.username)}`} className={usernameClasses}>
           {author.username}
         </Link>
-        <span className="text-conduit-gray-500 text-date">
+        <span className='text-conduit-gray-500 text-date'>
           {DateTime.fromISO(publishedAt).toLocaleString(DateTime.DATE_FULL)}
         </span>
       </div>

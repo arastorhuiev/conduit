@@ -11,7 +11,9 @@ module.exports = {
         conduit: {
           gray: {
             100: '#f3f3f3',
+            150: '#f5f5f5',
             200: '#eceeef',
+            250: '#e5e5e5',
             300: '#ddd',
             400: '#ccc',
             500: '#bbb',
@@ -35,8 +37,7 @@ module.exports = {
         25: '6.25rem',
       },
       boxShadow: {
-        banner:
-          'inset 0 8px 8px -8px rgb(0 0 0 / 30%), inset 0 -8px 8px -8px rgb(0 0 0 / 30%)',
+        banner: 'inset 0 8px 8px -8px rgb(0 0 0 / 30%), inset 0 -8px 8px -8px rgb(0 0 0 / 30%)',
       },
       dropShadow: {
         logo: '0px 1px 3px rgb(0 0 0 / 30%)',

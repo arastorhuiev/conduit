@@ -4,6 +4,7 @@ import { Container } from '../../../components/Container/Container';
 import { useGetSingleArticleQuery } from '../api/repository';
 import { ArticleBanner } from '../components/ArticleBanner/ArticleBanner';
 import { ArticleMeta } from '../components/ArticleMeta/ArticleMeta';
+import { CommentsList } from '../components/CommentsList/CommentsList';
 import { TagList } from '../components/TagList/TagList';
 
 interface ArticlePageProps {}
@@ -34,16 +35,16 @@ export const ArticlePage: FC<ArticlePageProps> = () => {
         publishedAt={data.article.createdAt}
       />
       <Container>
-        <div className="pb-8 border-b mb-6">
+        <div className='pb-8 border-b mb-6'>
           <p
-            className="text-articleBody leading-articleBody font-sourceSerif mb-8"
+            className='text-articleBody leading-articleBody font-sourceSerif mb-8'
             dangerouslySetInnerHTML={{
               __html: convertNewLines(data.article.body),
             }}
           />
           <TagList list={data.article.tagList} />
         </div>
-        <div className="flex justify-center">
+        <div className='flex justify-center'>
           <ArticleMeta
             authorNameStyle={'GREEN'}
             author={data.article.author}
@@ -51,6 +52,7 @@ export const ArticlePage: FC<ArticlePageProps> = () => {
             publishedAt={data.article.createdAt}
           />
         </div>
+        <CommentsList />
       </Container>
     </>
   );
