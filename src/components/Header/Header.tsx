@@ -17,7 +17,7 @@ export const Header: FC = () => {
         <Container>
           <div className='flex justify-between items-center'>
             <Link
-              className='font-titillium text-conduit-green text-2xl mr-8'
+              className='font-titillium text-conduit-green text-2xl mr-8 font-bold'
               to='/'>
               conduit
             </Link>
@@ -33,7 +33,7 @@ export const Header: FC = () => {
                 </NavLink>
               </li>
               <li className='ml-4'>
-                <NavLink to='/sign-up' className={navLinkClasses}>
+                <NavLink to='/register' className={navLinkClasses}>
                   Sign up
                 </NavLink>
               </li>

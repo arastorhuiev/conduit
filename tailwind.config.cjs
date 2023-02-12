@@ -56,6 +56,9 @@ module.exports = {
         articleTitle: '1.1',
         articleBody: '1.8rem',
       },
+      opacity: {
+        15: '0-15',
+      },
     },
   },
   plugins: [],
