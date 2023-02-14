@@ -27,6 +27,7 @@ module.exports = {
           },
           green: '#5CB85C',
           darkGreen: '#3d8b3b',
+          red: '#B85C5C',
         },
       },
       spacing: {

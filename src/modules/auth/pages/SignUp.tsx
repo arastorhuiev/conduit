@@ -7,6 +7,7 @@ import { yupResolver } from '@hookform/resolvers/yup';
 
 import { Container } from '../../../components/Container/Container';
 import { Input } from '../../../components/Input/Input';
+import { Button } from '../../../components/Button/Button';
 
 interface SignUpProps {}
 
@@ -23,7 +24,7 @@ const validationSchema = yup.object<SignUpFormValues>({
 });
 
 export const SignUp: FC<SignUpProps> = ({}) => {
-  const { register } = useForm<SignUpFormValues>({
+  const { register, handleSubmit, formState } = useForm<SignUpFormValues>({
     defaultValues: {
       username: '',
       email: '',
@@ -32,16 +33,34 @@ export const SignUp: FC<SignUpProps> = ({}) => {
     resolver: yupResolver(validationSchema),
   });
 
+  const onSubmit = (values: SignUpFormValues) => {
+  };
+
   return (
     <Container>
       <h1 className='text-4xl text-center mb-4'>Sign up</h1>
-      <p className='text-center'>
+      <p className='text-center mb-4'>
         <Link to='/sign-in'>Have an account?</Link>
       </p>
-      <form className='max-w-xl mx-auto flex flex-col gap-4'>
+      <form
+        onSubmit={handleSubmit(onSubmit)}
+        noValidate
+        className='max-w-xl mx-auto flex flex-col gap-4'>
+        <ul className='list-disc font-bold text-base text-conduit-red pl-10'>
+          {Object.keys(formState.errors).map((field) => (
+            <li key={`error-${field}`}>
+              {formState.errors[field as keyof SignUpFormValues]?.message?.toLowerCase()}
+            </li>
+          ))}
+        </ul>
         <Input type='text' placeholder='Username' {...register('username')} />
         <Input type='email' placeholder='Email' {...register('email')} />
         <Input type='password' placeholder='Password' {...register('password')} />
+        <div className='flex justify-end'>
+          <Button buttonStyle='GREEN' size='LG'>
+            Sign up
+          </Button>
+        </div>
       </form>
     </Container>
   );
