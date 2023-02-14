@@ -1,7 +1,7 @@
 import { FC } from 'react';
 
 import { useForm } from 'react-hook-form';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import * as yup from 'yup';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { toast } from 'react-toastify';
@@ -35,13 +35,13 @@ export const SignUp: FC<SignUpProps> = ({}) => {
     resolver: yupResolver(validationSchema),
   });
   const [triggerSignUpQuery] = useLazySignUpQuery();
+  const navigate = useNavigate();
 
   const onSubmit = async (values: SignUpFormValues) => {
     try {
       await triggerSignUpQuery(values, false);
-    
-    }
-    catch (error) {
+      navigate('/');
+    } catch (error) {
       toast.error('Something went wrong. Please try again later.');
     }
   };
