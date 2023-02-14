@@ -16,6 +16,7 @@ interface ButtonProps {
   buttonStyle?: keyof typeof ButtonStyleEnum;
   size?: keyof typeof ButtonSizeEnum;
   type?: ComponentProps<'button'>['type'];
+  disabled?: ComponentProps<'button'>['disabled'];
 }
 
 export const Button: FC<PropsWithChildren<ButtonProps>> = ({

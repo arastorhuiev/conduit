@@ -10,6 +10,7 @@ import { GlobalFeedPage } from './modules/feed/pages/GlobalFeedPage';
 import { ProfilePage } from './modules/profile/pages/ProfilePage';
 import { ArticlePage } from './modules/feed/pages/ArticlePage';
 import { SignUp } from './modules/auth/pages/SignUp';
+import { ToastContainer } from 'react-toastify';
 
 export const App: FC = () => {
   return (
@@ -25,6 +26,7 @@ export const App: FC = () => {
             <Route path='/register' element={<SignUp />} />
           </Routes>
         </div>
+        <ToastContainer />
       </BrowserRouter>
     </Provider>
   );

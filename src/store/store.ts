@@ -4,14 +4,20 @@ import type { TypedUseSelectorHook } from 'react-redux';
 
 import { feedApi } from '../modules/feed/api/repository';
 import { profileApi } from '../modules/profile/api/repository';
+import { authApi } from '../modules/auth/api/repository';
 
 export const store = configureStore({
   reducer: {
     [feedApi.reducerPath]: feedApi.reducer,
     [profileApi.reducerPath]: profileApi.reducer,
+    [authApi.reducerPath]: authApi.reducer,
   },
   middleware: (getDefaultMiddleware) => {
-    return getDefaultMiddleware().concat(feedApi.middleware, profileApi.middleware);
+    return getDefaultMiddleware().concat(
+      feedApi.middleware,
+      profileApi.middleware,
+      authApi.middleware,
+    );
   },
 });
 

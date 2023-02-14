@@ -4,10 +4,12 @@ import { useForm } from 'react-hook-form';
 import { Link } from 'react-router-dom';
 import * as yup from 'yup';
 import { yupResolver } from '@hookform/resolvers/yup';
+import { toast } from 'react-toastify';
 
 import { Container } from '../../../components/Container/Container';
 import { Input } from '../../../components/Input/Input';
 import { Button } from '../../../components/Button/Button';
+import { useLazySignUpQuery } from '../api/repository';
 
 interface SignUpProps {}
 
@@ -32,8 +34,16 @@ export const SignUp: FC<SignUpProps> = ({}) => {
     },
     resolver: yupResolver(validationSchema),
   });
+  const [triggerSignUpQuery] = useLazySignUpQuery();
 
-  const onSubmit = (values: SignUpFormValues) => {
+  const onSubmit = async (values: SignUpFormValues) => {
+    try {
+      await triggerSignUpQuery(values, false);
+    
+    }
+    catch (error) {
+      toast.error('Something went wrong. Please try again later.');
+    }
   };
 
   return (
@@ -57,7 +67,7 @@ export const SignUp: FC<SignUpProps> = ({}) => {
         <Input type='email' placeholder='Email' {...register('email')} />
         <Input type='password' placeholder='Password' {...register('password')} />
         <div className='flex justify-end'>
-          <Button buttonStyle='GREEN' size='LG'>
+          <Button buttonStyle='GREEN' size='LG' type='submit' disabled={formState.isSubmitting}>
             Sign up
           </Button>
         </div>
